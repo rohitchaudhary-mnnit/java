@@ -18,6 +18,12 @@ public class Lists {
         System.out.println("Printing length of each string in the list");
         list.stream().map(str -> str.length()).forEach(System.out:: println);
     }
+    
+    private static void printSumOfLengthOfEachString(List<String> list) {
+        System.out.print("Sum of length of each string in the list: ");
+        int sum = list.stream().mapToInt(String::length).sum();
+        print(sum);
+    }
 
     private static void print(int val) {
         System.out.println(val);
@@ -30,6 +36,7 @@ public class Lists {
 
         List<String> strList = Arrays.asList("MySQL", "Oracle", "Hbase", "Redis", "ElasticSearch", "Couchbase", "Cassandra");
         printLengthOfEachString(strList);
+        printSumOfLengthOfEachString(strList);
     }
 
 }
