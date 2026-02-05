@@ -1,5 +1,6 @@
 package streams;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -54,6 +55,11 @@ public class Lists {
         System.out.println(filteredList);
     }
 
+    private static void maxLengthString(List<String> stringList) {
+        String maxString = stringList.stream().max(Comparator.comparingInt(String::length)).orElse(null);
+        System.out.println(maxString+" has maximum length: "+maxString.length());
+    }
+
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1,2,3,4,5,1,4,3);
         printSumOfList(list);
@@ -64,6 +70,7 @@ public class Lists {
         printLengthOfEachString(strList);
         printSumOfLengthOfEachString(strList);
         getUniqueElements(list);
+        maxLengthString(strList);
     }
 
 }
