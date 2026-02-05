@@ -1,6 +1,9 @@
 package streams;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Lists {
     private static void printSumOfList(List<Integer> nums){
@@ -37,8 +40,22 @@ public class Lists {
         System.out.println(val);
     }
 
+    private static void getUniqueElements(List<Integer> list) {
+        System.out.println("Getting unique elements from list:");
+        List<Integer> filteredList = list.stream().collect(
+                Collectors.groupingBy(
+                        Function.identity(),
+                        Collectors.counting()
+                ))
+                .entrySet().stream()
+                .filter(e -> e.getValue()==1)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        System.out.println(filteredList);
+    }
+
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(1,2,3,4,5);
+        List<Integer> list = Arrays.asList(1,2,3,4,5,1,4,3);
         printSumOfList(list);
         printList(list);
         printListOptimized(list);
@@ -46,6 +63,7 @@ public class Lists {
         List<String> strList = Arrays.asList("MySQL", "Oracle", "Hbase", "Redis", "ElasticSearch", "Couchbase", "Cassandra");
         printLengthOfEachString(strList);
         printSumOfLengthOfEachString(strList);
+        getUniqueElements(list);
     }
 
 }
