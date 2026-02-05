@@ -1,6 +1,9 @@
 package streams;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Array {
     private static void printSumOfArray(int[] nums) {
@@ -29,8 +32,19 @@ public class Array {
         System.out.println(sum);
     }
 
+    private static void printFreqOfEachElementInArray(int[] arr) {
+        System.out.println("Printing printFreqOfEachElementInArray:");
+        Map<Integer, Long> freqMap = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.groupingBy(
+                                Function.identity(),
+                                Collectors.counting()
+                        ));
+        System.out.println(freqMap);
+    }
+
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 3, 4, 5};
+        int[] nums = new int[] {1, 2, 3, 4, 5, 2, 1, 4, 2};
         printSumOfArray(nums);
 
         printArray(nums);
@@ -38,5 +52,6 @@ public class Array {
         String[] arr = new String[]{"MySQL", "Oracle", "Hbase", "Redis", "ElasticSearch", "Couchbase", "Cassandra"};
         printLengthOfEachString(arr);
         printSumOfLengthOfEachString(arr);
+        printFreqOfEachElementInArray(nums);
     }
 }
