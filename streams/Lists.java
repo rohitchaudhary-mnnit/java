@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Lists {
     private static void printSumOfList(List<Integer> nums){
@@ -82,6 +83,14 @@ public class Lists {
         System.out.println("After doubling: "+employeeList);
     }
 
+    private static void alternateEvenIndicesSum(List<Integer> nums) {
+        int evenIndicesSum = IntStream.range(0, nums.size())
+                .filter(it -> it%2 == 0)
+                .sum();
+
+        System.out.println("Sum of even indices numbers: " + evenIndicesSum);
+    }
+
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(1,2,3,4,5,1,4,3);
         printSumOfList(list);
@@ -104,6 +113,8 @@ public class Lists {
         List<Employee> employeeList = List.of(e1, e2, e3, e4, e5);
         getMapWithFrequencyAsValues(employeeList);
         doubleSalaryOfEmployee(employeeList);
+
+        alternateEvenIndicesSum(List.of(0, 1, 2, 3, 4, 5, 6));
     }
 
 }
