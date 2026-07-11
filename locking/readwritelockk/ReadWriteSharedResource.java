@@ -3,6 +3,11 @@ package locking.readwritelockk;
 import java.util.concurrent.locks.ReadWriteLock;
 
 public class ReadWriteSharedResource {
+    /**
+     * ReadLock: More than 1 thread can acquire readLock
+     * WriteLock: Only 1 thread can acquire writeLock
+     */
+
     boolean isAvailable = true;
     int x = 5;
     public void readResource(ReadWriteLock lock) {
