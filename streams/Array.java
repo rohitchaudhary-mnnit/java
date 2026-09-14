@@ -43,6 +43,14 @@ public class Array {
         System.out.println(freqMap);
     }
 
+    private static void getDistinctElements(int[] nums) {
+        System.out.println("Getting distinct numbers from nums");
+        int[] filteredList = Arrays.stream(nums).distinct().toArray();
+        for(int it : filteredList) {
+            System.out.println(it);
+        }
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[] {1, 2, 3, 4, 5, 2, 1, 4, 2};
         printSumOfArray(nums);
@@ -52,6 +60,8 @@ public class Array {
         String[] arr = new String[]{"MySQL", "Oracle", "Hbase", "Redis", "ElasticSearch", "Couchbase", "Cassandra"};
         printLengthOfEachString(arr);
         printSumOfLengthOfEachString(arr);
+
         printFreqOfEachElementInArray(nums);
+        getDistinctElements(nums);
     }
 }
